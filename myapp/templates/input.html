@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" 
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+    crossorigin="anonymous">
+    <title>Sentiment Analysis</title>
+</head>
+<body>
+    <center><h1>Re-Review</h1></center>
+    
+   <form method="post" action="{% url 'sentiment_analysis' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="input_text">Enter text here</label>
+            <textarea type= "text" class="form-control" name="input_text" id="input_text" rows="3" required></textarea>
+          </div>
+        <center><button type="submit">Analyze</button></center>
+    </form>
+
+    {% if sentiment %}
+        <h2>Sentiment Score</h2>
+        <p>{{ sentiment }}</p>
+        <p>{{ score }}</p>
+    {% endif %}
+
+</body>
+</html>
